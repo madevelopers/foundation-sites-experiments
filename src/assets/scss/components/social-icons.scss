@@ -1,0 +1,108 @@
+$social-icon-palette: (
+  'twitter': #77cdf0,
+  'pinterest': #ec5657,
+  'facebook': #537cbe,
+  'googleplus': #f36d54,
+  'linkedin': #0e85c9,
+  'dribbble': #d97da6,
+  'skype': #1b96d2,
+  'dropbox': #8ed3f2,
+  'lastfm': #eb466e,
+  'soundcloud': #f1c958,
+  'wordpress': #56aede,
+  'youtube': #e9654c,
+  'tumblr': #5f90b0,
+  'apple': #7f7f7f,
+  'yahoo': #8f57a0,
+  'windows': #24b7eb,
+  'amazon': #fcc433,
+  'digg': #282828,
+  'stumbleupon': #a1cd90,
+  'behance': #41bff1,
+  'vimeo': #8ccfdf,
+  'flickr': #de438f,
+  'rss': #f29200,
+  'android': #d5e17f,
+  'instagram': #69696b,
+  'paypal': #5169b1,
+  'deviantart': #6b8852,
+) !default;
+
+$social-icon-sizes: (
+  tiny    : .8rem,
+  small   : 1rem,
+  default : 1.2rem,
+  large   : 1.6rem,
+) !default;
+
+$social-icon-padding: (
+  tiny    : .9rem,
+  small   : 1.15rem,
+  default : 1.3rem,
+  large   : 1.9rem,
+) !default;
+
+$social-icon-radius: 0 !default;
+
+
+@mixin social-icon {
+  .social-icon {
+    @include button;
+
+    padding: 0;
+    margin: 0;
+
+    $icon-size: map-get($social-icon-sizes, default) + map-get($social-icon-padding, default);
+    width: $icon-size;
+    height: $icon-size;
+
+    border-radius: $social-icon-radius;
+    font-size : map-get($social-icon-sizes, default);
+
+    // Sizes
+    @each $size, $value in map-remove($social-icon-sizes, default) {
+      &.#{$size} {
+        font-size : $value;
+        width     : $value + map-get($social-icon-padding, $size);
+        height    : $value + map-get($social-icon-padding, $size);
+      }
+    }
+
+    // Colors
+    @each $name, $color in $social-icon-palette {
+      &.#{$name} {
+        @include button-style($color, auto, $white);
+      }
+    }
+
+    &.circle {
+      border-radius: 50%;
+    }
+
+    &.raised {
+      position: relative;
+      border: 0;
+
+      @each $name, $color in $social-icon-palette {
+        &.#{$name}:after {
+          background: darken($color, 5%);
+        }
+
+        &.#{$name}:hover:after {
+          background: darken($color, 20%);
+        }
+      }
+
+      &:after {
+        content: '';
+
+        width: 100%;
+        height: 3px;
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,85 @@
+---
+
+social_icons:
+  'twitter': 'fa-twitter'
+  'pinterest': 'fa-pinterest'
+  'facebook': 'fa-facebook'
+  'googleplus': 'fa-google-plus'
+  'linkedin': 'fa-linkedin'
+  'dribbble': 'fa-dribbble'
+  'skype': 'fa-skype'
+  'dropbox': 'fa-dropbox'
+  'lastfm': 'fa-lastfm'
+  'soundcloud': 'fa-soundcloud'
+  'wordpress': 'fa-wordpress'
+  'youtube': 'fa-youtube'
+  'tumblr': 'fa-tumblr'
+  'apple': 'fa-apple'
+  'yahoo': 'fa-yahoo'
+  'windows': 'fa-windows'
+  'amazon': 'fa-amazon'
+  'digg': 'fa-digg'
+  'stumbleupon': 'fa-stumbleupon'
+  'behance': 'fa-behance'
+  'vimeo': 'fa-vimeo'
+  'flickr': 'fa-flickr'
+  'rss': 'fa-rss'
+  'android': 'fa-android'
+  'instagram': 'fa-instagram'
+  'paypal': 'fa-paypal'
+  'deviantart': 'fa-deviantart'
+---
+
+
+<div class="row column">
+
+    <h2>Social Icons</h2>
+
+    <button class="tiny social-icon facebook">
+        <span class="show-for-sr">facebook</span>
+        <span aria-hidden="true"><i class="fa fa-facebook icon"></i></span>
+    </button><button class="tiny button" style="margin-bottom: 0;">default</button>
+
+    <button class="small social-icon facebook">
+        <span class="show-for-sr">facebook</span>
+        <span aria-hidden="true"><i class="fa fa-facebook icon"></i></span>
+    </button><button class="small button" style="margin-bottom: 0;">default</button>
+
+    <button class="social-icon facebook">
+        <span class="show-for-sr">facebook</span>
+        <span aria-hidden="true"><i class="fa fa-facebook icon"></i></span>
+    </button><button class="button" style="margin-bottom: 0;">default</button>
+
+    <button class="large social-icon facebook">
+        <span class="show-for-sr">facebook</span>
+        <span aria-hidden="true"><i class="fa fa-facebook icon"></i></span>
+    </button><button class="large button" style="margin-bottom: 0;">default</button>
+
+
+    <br><br>
+
+    {{#each social_icons}}
+        <button class="social-icon {{@key}}" style="margin-bottom: 10px;">
+            <span class="show-for-sr">{{@key}}</span>
+            <span aria-hidden="true"><i class="fa {{this}} icon"></i></span>
+        </button>
+    {{/each}}
+
+    <br>
+
+    {{#each social_icons}}
+        <button class="circle social-icon {{@key}}" style="margin-bottom: 10px;">
+            <span class="show-for-sr">{{@key}}</span>
+            <span aria-hidden="true"><i class="fa {{this}} icon"></i></span>
+        </button>
+    {{/each}}
+
+    <br>
+
+    {{#each social_icons}}
+        <button class="raised social-icon {{@key}}" style="margin-bottom: 10px;">
+            <span class="show-for-sr">{{@key}}</span>
+            <span aria-hidden="true"><i class="fa {{this}} icon"></i></span>
+        </button>
+    {{/each}}
+</div>
