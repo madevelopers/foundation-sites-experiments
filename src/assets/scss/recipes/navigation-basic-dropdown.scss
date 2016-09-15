@@ -1,0 +1,173 @@
+$navbar-background: map-get($foundation-palette, primary) !default;
+$navbar-color: #fff !default;
+
+$navbar-link-color: #fff !default;
+$navbar-link-hover-color: $navbar-link-color !default;
+$navbar-link-hover-background: darken($navbar-background, 5%) !default;
+
+$navbar-submenu-background: $navbar-background !default;
+$navbar-submenu-border: darken($navbar-background, 5%) 1px solid !default;
+
+
+
+$title-bar-height: rem-calc(50) !default;
+$title-bar-menu-trigger-background: darken($titlebar-background, 5%);
+$title-bar-menu-background: $title-bar-menu-trigger-background;
+
+
+
+$top-bar-height: rem-calc(70) !default;
+$top-bar-submenu-border: $navbar-submenu-border !default;
+
+
+
+
+@mixin navigation-basic-dropdown {
+  .nav-bar {
+    a {
+      color: $navbar-link-color;
+
+      &:hover {
+        color: $navbar-link-hover-color;
+        background-color: $navbar-link-hover-background;
+      }
+    }
+
+    .menu {
+      &.dropdown {
+        > li.is-dropdown-submenu-parent > a::after {
+          border-color: $navbar-link-color transparent transparent;
+        }
+      }
+
+      &.submenu {
+        border: $navbar-submenu-border;
+      }
+    }
+  }
+
+
+  .title-bar {
+    height: $title-bar-height;
+    // vertical-align: middle;
+
+    button {
+      line-height: $title-bar-height;
+      padding: 0 1rem;
+
+      &:focus,
+      &:active {
+        outline: none;
+      }
+    }
+
+    .logo {
+      height: $title-bar-height;
+      line-height: $title-bar-height;
+
+      margin: 0 rem-calc(map-get($grid-column-gutter, small)) / 2;
+
+      @each $breakpoint, $value in map-remove($grid-column-gutter, small) {
+        @include breakpoint($breakpoint) {
+          margin: 0 rem-calc($value) / 2;
+        }
+      }
+
+
+      a {
+        display: block;
+        height: $title-bar-height;
+      }
+
+      img {
+        max-height: $title-bar-height;
+        height: auto;
+        width: auto;
+      }
+    }
+
+    .nav-menu-trigger {
+      background-color: $title-bar-menu-trigger-background;
+      padding: 0;
+
+      height: $title-bar-height;
+      width: $title-bar-height;
+    }
+  }
+
+
+  .top-bar {
+    // float: right;
+    // min-width: 200px;
+    // max-width: 400px;
+    // width: 100%;
+    //
+    background-color: $title-bar-menu-background;
+    padding: 0;
+
+    @include breakpoint(medium) {
+      background-color: $topbar-background;
+      padding: $topbar-padding;
+      height: $top-bar-height;
+    }
+
+    ul {
+      background: 0;
+    }
+
+    .logo {
+      height: $top-bar-height;
+      line-height: $top-bar-height;
+    }
+
+    .top-bar-left {
+      display: none;
+
+      @include breakpoint(medium) {
+        display: block;
+      }
+    }
+
+    .top-bar-right {
+      > .menu {
+        @include menu-direction(vertical);
+
+        @include breakpoint(medium) {
+          @include menu-direction(horizontal);
+        }
+
+        > li {
+          border-top: 1px lighten($title-bar-menu-background, 3%) solid;
+
+          &:first-child {
+            border-top: 0;
+          }
+
+          @include breakpoint(medium) {
+            border: 0;
+          }
+
+          > a {
+            padding: 1rem rem-calc(map-get($grid-column-gutter, small)) / 2;
+
+            &:after {
+              content: "\f105";
+              font: normal normal 1em/1 "FontAwesome";
+              float: right;
+            }
+
+            @include breakpoint(medium) {
+              height: $top-bar-height;
+              line-height: $top-bar-height;
+              padding: 0 1rem;
+
+              &:after {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
